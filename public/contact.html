@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cricket Fan Registration</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+        <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url("stadium.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.589);
+        }
+
+        form {
+            background: linear-gradient(rgba(173, 173, 173, 0.788), white);
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px 30px;
+            border-radius: 8px;
+            border: 2px, solid, black;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.589);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #66afe9;
+            box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+            outline: none;
+        }
+
+        .form-group input[type="checkbox"],
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        .form-group .inline {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357AE8;
+        }
+    </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="logo.png" alt="logo" width="50">
+                    <span class="ms-1 text-light">CRIC BRICKS </span>
+                </a>
+                <!-- Navbar Toggler Button -->
+                <button
+                    class="navbar-toggler"
+                    type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon-white"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-light"
+                                href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light"
+                                href="teams.html">Teams</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light"
+                                href="contact.html">Contact us</a>
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container custom-container">
+            <div class="head" style="padding-top:10px;">
+                <h1>Cricket Fan Registration Form</h1>
+            </div>
+
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name"
+                        placeholder="Enter your name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email"
+                        placeholder="Enter your email">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phone"
+                        placeholder="Enter your phone number">
+                </div>
+                <div class="mb-3">
+                    <label for="team" class="form-label">Team Name</label>
+                    <select class="form-select" id="team">
+                        <option selected>Select your favorite team</option>
+                        <option value="India">India</option>
+                        <option value="Australia">Australia</option>
+                        <option value="England">England</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                    </select>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input"
+                        id="whatsapp">
+                    <label class="form-check-label" for="whatsapp">Do you want
+                        to receive WhatsApp notifications?</label>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Do you like T20?</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"
+                                name="t20" id="t20yes" value="yes">
+                            <label class="form-check-label"
+                                for="t20yes">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio"
+                                name="t20" id="t20no" value="no">
+                            <label class="form-check-label"
+                                for="t20no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
