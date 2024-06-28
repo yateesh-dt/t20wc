@@ -25,14 +25,14 @@ class Post {
 }
 
 document.getElementById("update-data").addEventListener("click", loadData);
-
+var posts;
 function loadData() {
   fetch("https://jsonplaceholder.typicode.com/posts")
     .then((response) => response.json())
     .then((data) => {
       console.log("API sent response");
       console.log(data);
-      const posts = data.map(
+      posts = data.map(
         (postData) => new Post(postData.userId, postData.title, postData.body)
       );
       updateTable(posts);
@@ -62,5 +62,18 @@ function updateTable(posts) {
     1000
   );
 }
+const searchInput = document.getElementById("searchInput");
+searchInput.addEventListener("input", () => {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+
+  if (searchTerm) {
+    const filteredPosts = posts.filter((post) =>
+      post.name.toLowerCase().includes(searchTerm)
+    );
+    updateTable(filteredPosts);
+  } else {
+    updateTable(posts);
+  }
+});
 
 loadData();
