@@ -35,7 +35,14 @@
             border: 2px, solid, black;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.589);
         }
-
+        .error-message{
+            color: red;
+            text-decoration: solid;
+            font-size: x-large;
+            text-align: center;
+            background-color: black;
+            background-size: contain
+        }
         .form-group {
             margin-bottom: 15px;
         }
@@ -143,26 +150,27 @@
                 <h1>Cricket Fan Registration Form</h1>
             </div>
 
-            <form>
+            <form id="contact-form">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name"
-                        placeholder="Enter your name">
+                        placeholder="Enter your name" required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email"
-                        placeholder="Enter your email">
+                        placeholder="Enter your email" required>
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone Number</label>
                     <input type="text" class="form-control" id="phone"
-                        placeholder="Enter your phone number">
+                        placeholder="Enter your phone number" required>
                 </div>
                 <div class="mb-3">
                     <label for="team" class="form-label">Team Name</label>
-                    <select class="form-select" id="team">
-                        <option selected>Select your favorite team</option>
+                    <select class="form-select" id="team" required>
+                        <option value selected>Select your favorite
+                            team</option>
                         <option value="India">India</option>
                         <option value="Australia">Australia</option>
                         <option value="England">England</option>
@@ -172,13 +180,14 @@
                         <option value="Sri Lanka">Sri Lanka</option>
                     </select>
                 </div>
-                <div class="mb-3 form-check">
+                <div class="mb-3 form-check" id="whatsapp-container"
+                    style="display: none;">
                     <input type="checkbox" class="form-check-input"
                         id="whatsapp">
                     <label class="form-check-label" for="whatsapp">Do you want
                         to receive WhatsApp notifications?</label>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" id="t20-container" style="display: none;">
                     <label class="form-label">Do you like T20?</label>
                     <div>
                         <div class="form-check form-check-inline">
@@ -196,9 +205,13 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" id="reset-button"
+                    class="btn btn-secondary">Reset</button>
             </form>
+            <div id="error-message" class="error-message"></div>
         </div>
         <!-- Form ended  -->
+        <script src="scripts/contact.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
         <script
