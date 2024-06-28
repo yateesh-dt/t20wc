@@ -19,7 +19,13 @@
             background-repeat: no-repeat;
             
         }
-
+        .thank-you-container{
+            background-color: rgba(255, 255, 255, 0.488);
+            padding: 20px;
+            border-radius: 20px;
+            background-size: auto;
+            text-align: center;
+        }
         h1 {
             text-align: center;
             color: #333;
@@ -142,15 +148,19 @@
                 </div>
             </div>
         </nav>
+        <div class="container thank-you-container" id="thank-you-section"
+            style="display: none; margin-top: 100px;">
+            <p>Thank you for your submission!</p>
+            <div id="submitted-data"></div>
+            <button id="delete-button" class="btn btn-danger">Delete
+                Data</button>
+        </div>
         <!-- Navbar ended  -->
 
         <!-- Form started  -->
         <div class="container custom-container">
-            <div class="head" style="padding-top:10px;">
-                <h1>Cricket Fan Registration Form</h1>
-            </div>
 
-            <form id="contact-form">
+            <form id="contact-form" style="margin-top: 100px;">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name"
