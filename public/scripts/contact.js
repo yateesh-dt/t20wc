@@ -110,5 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Data deleted from your local storage");
     thankYouSection.style.display = "none";
     form.style.display = "block";
+    form.reset();
   });
 });
