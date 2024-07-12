@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2024-07-12
+  location: MyString
+  team1_id: 1
+  team2_id: 1
+  score_team1: 1
+  score_team2: 1
+
+two:
+  date: 2024-07-12
+  location: MyString
+  team1_id: 1
+  team2_id: 1
+  score_team1: 1
+  score_team2: 1
