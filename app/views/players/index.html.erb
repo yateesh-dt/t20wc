@@ -1,0 +1,55 @@
+<div class="container" style="margin-bottom:10px">
+  <h2>Players</h2>
+  <%= link_to "New Player", new_player_path, class: "btn btn-primary"%>
+</div>
+
+<div class="container">
+  <div class="mb-3">
+    <%= form_tag players_path, method: :get, class: "form-inline" do %>
+    <%= text_field_tag :name, params[:name], { placeholder: "Search by name",
+    class: "form-control me-2" } %>
+    <%= select_tag :team_id, options_for_select(Team.all.map { |team|
+    ["#{team.id}.#{team.name}", team.id] }, params[:team_id]), { prompt:
+    "Select Team", class: "form-control me-2" } %>
+    <%= submit_tag "Filter", class: "btn btn-primary", style: "margin-top:10px"
+    %>
+    <% end %>
+  </div>
+
+  <table class="table table-hover" style="margin-top:20px;">
+    <thead>
+      <tr>
+        <th scope="col">Players Details</th>
+      </tr>
+    </thead>
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Position</th>
+        <th scope="col">Team</th>
+        <th scope="col">Role</th>
+        <th scope="col">Captaincy</th>
+        <th scope="col">Activity</th>
+        <th scope="col">Description</th>
+        <th scope="col">Deletion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+      <tr>
+        <th scope="row"><%= link_to player.name, player_path(player)%></th>
+        <td><%= player.age %></td>
+        <td><%= player.position %></td>
+        <td><%= player.team.name %></td>
+        <td><%= player.role %></td>
+        <td><%= player.is_captain %></td>
+        <td><%= player.is_active%></td>
+        <td><%= player.description%></td>
+        <td><%= button_to "Delete", player_path(player), method: :delete, class:
+          "btn btn-danger", style: "margin:5px size:40%"%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,40 @@
+<%= form_with(model: player) do |form| %>
+<% if player.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from
+    being saved:</h2>
+
+  <ul>
+    <% player.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+<%= form.label :age %>
+<%= form.number_field :age %>
+
+<%= form.label :position %>
+<%= form.text_field :position %>
+
+<%= form.label :team_id %>
+<%= form.number_field :team_id %>
+
+<%= form.label :role %>
+<%= form.text_field :role %>
+
+<%= form.label :is_captain %>
+<%= form.check_box :is_captain %>
+
+<%= form.label :is_active %>
+<%= form.check_box :is_active %>
+
+<%= form.label :description %>
+<%= form.text_area :description %>
+
+<%= form.submit %>
+<% end %>

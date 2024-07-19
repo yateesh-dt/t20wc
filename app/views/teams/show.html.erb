@@ -1,0 +1,21 @@
+<div class="container" style="width:fit-content">
+    <div class="card text-center">
+        <div class="card-header">
+            <%= @team.name %>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Belongs to <%= @team.country %></h5>
+            <p class="card-text">Founded in <%= @team.founded%></p>
+            <%= link_to "<-Back to Teams", teams_path, class:
+            "btn btn-dark"%>
+            <%= link_to "Edit the team", edit_team_path(@team), class:
+            "btn btn-secondary"%>
+            <%= button_to "Delete the team", team_path(@team), method: :delete,
+            class:
+            "btn btn-danger", style:"margin:5px;"%>
+        </div>
+        <div class="card-footer text-body-secondary">
+            <%= @team.description%>
+        </div>
+    </div>
+</div>s

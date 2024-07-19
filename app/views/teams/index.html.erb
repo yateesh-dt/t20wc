@@ -1,0 +1,41 @@
+<!-- add heading and new button above the table  -->
+<div class="container">
+    <th scope="col"><%= link_to "New Team", new_team_path,
+        class:
+        "btn btn-primary"%></th>
+</div>
+
+<div class="container">
+    <table class="table table-hover"
+        style="margin-top:20px;">
+        <thead>
+            <tr>
+                <th scope="col">Team Details</th>
+
+            </tr>
+        </thead>
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Country</th>
+                <th scope="col">Founded</th>
+                <th scope="col">Description</th>
+                <th scope="col">Deletion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @teams.each do |team| %>
+            <tr>
+                <th scope="row"><%= link_to team.name, team_path(team)%></th>
+                <td><%= team.country %></td>
+                <td><%= team.founded %></td>
+                <td><%= team.description %></td>
+                <td><%= button_to "Delete", team_path(team), method:
+                    :delete,
+                    class:
+                    "btn btn-danger", style:"margin:5px size:40%"%></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
