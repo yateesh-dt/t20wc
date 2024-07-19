@@ -1,40 +1,59 @@
-<%= form_with(model: player) do |form| %>
-<% if player.errors.any? %>
-<div style="color: red">
-  <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from
-    being saved:</h2>
+<div class="container">
+  <%= form_with(model: player) do |form| %>
+  <% if player.errors.any? %>
+  <div class="alert alert-danger">
+    <h2><%= pluralize(player.errors.count, "error") %> prohibited this player
+      from
+      being saved:</h2>
 
-  <ul>
-    <% player.errors.each do |error| %>
-    <li><%= error.full_message %></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% player.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :age %>
+    <%= form.number_field :age, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :position %>
+    <%= form.text_field :position, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :team_id %>
+    <%= form.number_field :team_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :role %>
+    <%= form.text_field :role, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :is_captain %>
+    <%= form.check_box :is_captain, class: "form-check-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :is_active %>
+    <%= form.check_box :is_active, class: "form-check-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <%= form.submit class: "btn btn-primary" %>
+  <% end %>
 </div>
-<% end %>
-
-<%= form.label :name %>
-<%= form.text_field :name %>
-
-<%= form.label :age %>
-<%= form.number_field :age %>
-
-<%= form.label :position %>
-<%= form.text_field :position %>
-
-<%= form.label :team_id %>
-<%= form.number_field :team_id %>
-
-<%= form.label :role %>
-<%= form.text_field :role %>
-
-<%= form.label :is_captain %>
-<%= form.check_box :is_captain %>
-
-<%= form.label :is_active %>
-<%= form.check_box :is_active %>
-
-<%= form.label :description %>
-<%= form.text_area :description %>
-
-<%= form.submit %>
-<% end %>

@@ -4,7 +4,13 @@
 
 <br>
 
-<div>
-  <%= link_to "Show this player", @player %> |
-  <%= link_to "Back to players", players_path %>
+<div class="container mt-3">
+  <div class="btn-group" role="group">
+    <%= link_to "Show this player", @player, class: "btn btn-secondary" %>
+  </div>
+  <div class="btn-group" role="group">
+    <%= link_to "Back to players", players_path, class:
+    "btn btn-secondary ml-2"
+    %>
+  </div>
 </div>
