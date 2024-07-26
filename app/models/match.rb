@@ -1,7 +1,9 @@
 require 'csv'
 
 class Match < ApplicationRecord
-  
+   scope :by_team1, ->(team1_id) { where(team1_id: team1_id) }
+scope :by_team2, ->(team2_id) { where(team2_id: team2_id) }
+scope :by_date_range, ->(start_date, end_date) { where(date: start_date..end_date) }
   belongs_to :team1, class_name: 'Team'
   belongs_to :team2, class_name: 'Team'
   before_save :date_check

@@ -1,21 +1,19 @@
 class MatchesController < ApplicationController
-before_action :authenticate_user!, except: [:show, :index]
-
-
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @teams = Team.all
-    @matches = Match.includes(:team1, :team2)
-    
-    if params[:search].present?
-      @matches = @matches.where(team1_id: params[:search][:team1_id]) if params[:search][:team1_id].present?
-      @matches = @matches.where(team2_id: params[:search][:team2_id]) if params[:search][:team2_id].present?
-      if params[:search][:start_date].present? && params[:search][:end_date].present?
-        @matches = @matches.where(date: params[:search][:start_date]..params[:search][:end_date])
+    def index
+      @teams = Team.all
+      @matches = Match.includes(:team1, :team2)
+
+      if params[:search].present?
+        @matches = @matches.by_team1(params[:search][:team1_id]) if params[:search][:team1_id].present?
+        @matches = @matches.by_team2(params[:search][:team2_id]) if params[:search][:team2_id].present?
+        if params[:search][:start_date].present? && params[:search][:end_date].present?
+          @matches = @matches.by_date_range(params[:search][:start_date], params[:search][:end_date])
+        end
       end
     end
-  end
 
   def show
   end
