@@ -1,6 +1,11 @@
 require 'csv'
 
 class Match < ApplicationRecord
+  
+  belongs_to :team1, class_name: 'Team'
+  belongs_to :team2, class_name: 'Team'
+  before_save :date_check
+
   def self.process_data(path)
     CSV.read(path, headers: true).map do |row|
       {
@@ -18,6 +23,13 @@ class Match < ApplicationRecord
     data = process_data(path)
     data.each do |match_attributes|
       Match.create!(match_attributes)
+    end
+  end
+  private
+  def date_check
+    if date.present? && date < Date.today
+      errors[:base] << "Date cannot be in the past"
+      throw(:abort)
     end
   end
 end

@@ -1,0 +1,42 @@
+<div class="container">
+
+<%= form_with(model: match, local: true) do |form| %>
+<% if match.errors.any? %>
+<div class="alert alert-danger">
+    <h4>Errors:</h4>
+    <ul>
+        <% match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+    <%= form.label :date %>
+    <%= form.date_field :date, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+    <%= form.label :team1_id %>
+    <%= form.collection_select :team1_id, teams, :id, :name, { prompt:
+    'Select Team 1' }, { class: 'form-control' } %>
+</div>
+
+<div class="form-group">
+    <%= form.label :team2_id %>
+    <%= form.collection_select :team2_id, teams, :id, :name, { prompt:
+    'Select Team 2' }, { class: 'form-control' } %>
+</div>
+
+
+<div class="form-group" style=" margin-bottom: 10px;">
+    <%= form.submit class: 'btn btn-primary' %>
+</div>
+<% end %>
+</div>

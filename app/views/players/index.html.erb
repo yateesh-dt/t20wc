@@ -8,6 +8,7 @@
     <%= form_tag players_path, method: :get, class: "form-inline" do %>
     <%= text_field_tag :name, params[:name], { placeholder: "Search by name",
     class: "form-control me-2" } %>
+    <%= text_field_tag :role, params[:role], { placeholder: "Search by role" , class: "form-control me-2" } %>
     <%= select_tag :team_id, options_for_select(Team.all.map { |team|
     ["#{team.id}.#{team.name}", team.id] }, params[:team_id]), { prompt:
     "Select Team", class: "form-control me-2" } %>
@@ -20,6 +21,7 @@
     <thead>
       <tr>
         <th scope="col">Players Details</th>
+        
       </tr>
     </thead>
     <thead class="table-dark">

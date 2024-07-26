@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
+<%puts @player.team%>
 
-<%= render @player %>
+<%= render @player, team:@player.team %>
 
 <div>
   <%= link_to "Edit this player", edit_player_path(@player) %> |

@@ -1,0 +1,18 @@
+<div class="container">
+    <h1 class="my-4">Match Details</h1>
+
+    <div class="card">
+        <div class="card-header">
+            Match on <%= @match.date %> at <%= @match.location %>
+        </div>
+        <div class="card-body">
+            <p class="card-text"><strong>Team 1:</strong> <%= @match.team1.name
+                %></p>
+            <p class="card-text"><strong>Team 2:</strong> <%= @match.team2.name
+                %></p>
+            <%= link_to 'Back to Matches', matches_path, class:
+            'btn btn-secondary' %>
+        </div>
+    </div>
+
+</div>

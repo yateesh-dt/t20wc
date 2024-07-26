@@ -1,15 +1,19 @@
 class PlayersController < ApplicationController
+before_action :authenticate_user!, except: [:show, :index]
+
+
   before_action :set_player, only: %i[ show edit update destroy ]
 
   # GET /players or /players.json
   def index
-    if params[:team_id].present? and params[:name].present?
-    @players = Player.where(team_id: params[:team_id])
-    @players = @players.where("name like ?", "%#{params[:name]}%")
+    if params[:team_id].present? or params[:name].present? or params[:role].present?
+    @players = Player.with_role(params[:role])
+    # @players = Player.where(team_id: params[:team_id])
+    # @players = @players.where("name like ?", "%#{params[:name]}%")
+    
   else
     @players = Player.all
   end
-  @teams = Team.all
   end
 
   # GET /players/1 or /players/1.json
@@ -34,6 +38,7 @@ class PlayersController < ApplicationController
         format.html { redirect_to player_url(@player), notice: "Player was successfully created." }
         format.json { render :show, status: :created, location: @player }
       else
+        format.html { redirect_to players_url, notice: "Player cannot have two captains." }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @player.errors, status: :unprocessable_entity }
       end
@@ -47,6 +52,7 @@ class PlayersController < ApplicationController
         format.html { redirect_to player_url(@player), notice: "Player was successfully updated." }
         format.json { render :show, status: :ok, location: @player }
       else
+       format.html { redirect_to players_url, notice: "Player cannot be created." }
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @player.errors, status: :unprocessable_entity }
       end
@@ -55,11 +61,15 @@ class PlayersController < ApplicationController
 
   # DELETE /players/1 or /players/1.json
   def destroy
-    @player.destroy!
-
-    respond_to do |format|
+    if @player.destroy
+      respond_to do |format|
       format.html { redirect_to players_url, notice: "Player was successfully destroyed." }
       format.json { head :no_content }
+      end 
+    else
+      respond_to do |format|
+      format.html { redirect_to players_url, notice: "Player cannot be destroyed." }
+      end
     end
   end
 
